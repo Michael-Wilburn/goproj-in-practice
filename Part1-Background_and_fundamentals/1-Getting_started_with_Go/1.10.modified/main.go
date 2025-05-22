@@ -1,0 +1,29 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"log"
+	"os"
+	"strings"
+)
+
+func reverseName(name []rune) string {
+	reversed := make([]rune, 0)
+	for i := len(name) - 1; i >= 0; i-- {
+		reversed = append(reversed, name[i])
+	}
+	return string(reversed)
+}
+
+func main() {
+	fmt.Print("Enter your name: ")
+	reader := bufio.NewReader(os.Stdin)
+	name, err := reader.ReadString('\n')
+	if err != nil {
+		log.Fatal("could not read from stdin", err)
+	}
+	name = strings.TrimSpace(name)
+	runes := []rune(name)
+	fmt.Println("Your reversed name is:", reverseName(runes))
+}
