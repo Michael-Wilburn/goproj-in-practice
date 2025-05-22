@@ -8,10 +8,11 @@ import (
 	"strings"
 )
 
-func reverseName(name []rune) string {
+func reverseNameFixed(name string) string {
 	reversed := make([]rune, 0)
-	for i := len(name) - 1; i >= 0; i-- {
-		reversed = append(reversed, name[i])
+	runes := []rune(name)
+	for i := len(runes) - 1; i >= 0; i-- {
+		reversed = append(reversed, runes[i])
 	}
 	return string(reversed)
 }
@@ -24,6 +25,6 @@ func main() {
 		log.Fatal("could not read from stdin", err)
 	}
 	name = strings.TrimSpace(name)
-	runes := []rune(name)
-	fmt.Println("Your reversed name is:", reverseName(runes))
+
+	fmt.Println("Your reversed name is:", reverseNameFixed(name))
 }
